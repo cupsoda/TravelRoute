@@ -10,7 +10,6 @@ import com.ahnstory.travelroute.config.AppConfiguration;
 
 public class Logger {
     public static void v(String className, String message) {
-        Log.d("SSO", "isDebug?" + AppConfiguration.isDebug);
         if (AppConfiguration.isDebug) {
             Log.v(className, message);
         }

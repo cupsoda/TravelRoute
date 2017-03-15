@@ -1,6 +1,8 @@
 package com.ahnstory.travelroute.config;
 
 
+import android.os.Build;
+
 import com.ahnstory.travelroute.BuildConfig;
 
 /**
@@ -9,4 +11,5 @@ import com.ahnstory.travelroute.BuildConfig;
 
 public class AppConfiguration {
     public static boolean isDebug = BuildConfig.DEBUG;
+    public static int ANDROID_VERSION = Build.VERSION.SDK_INT;
 }
