@@ -14,4 +14,13 @@ public class Logger {
             Log.v(className, message);
         }
     }
+
+    public static void w(String className, String message) {
+        Log.w(className, message);
+    }
+
+    public static void w(String className, String message, Exception e) {
+        // TODO @SSO warn 이상의 log 는 firebase or crashlytics 에 전송하기
+        Log.w(className, message, e);
+    }
 }
