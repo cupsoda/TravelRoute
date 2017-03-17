@@ -2,30 +2,32 @@ package com.ahnstory.travelroute.database.model;
 
 import java.util.Date;
 
-import io.realm.RealmObject;
-import io.realm.annotations.Required;
-
 /**
  * Created by sohyunahn on 2017. 3. 15..
  */
 
-public class MediaMarker extends RealmObject {
+public class MediaMarker {
 
-    @Required private long id;
-    @Required private Date takenDate;
-    @Required private String mediaPath;
-    @Required private String mimeType;
+    private long mediaId;
+    private Date takenDate;
+    private String mediaPath;
+    private String mimeType;
     private double latitude;
     private double longitude;
     private int orientation;
 
-    public MediaMarker(long id, Date takenDate, String mediaPath, String mimeType, double latitude, double longitude, int orientation) {
-        this.id = id;
+    public MediaMarker(long mediaId, Date takenDate, String mediaPath, String mimeType, double latitude, double longitude, int orientation) {
+        this.mediaId = mediaId;
         this.takenDate = takenDate;
         this.mediaPath = mediaPath;
         this.mimeType = mimeType;
         this.latitude = latitude;
         this.longitude = longitude;
         this.orientation = orientation;
+    }
+
+    @Override
+    public String toString() {
+        return "mediaId=" + mediaId + ", takenDate=" + takenDate + ", mediaPath=" + mediaPath + "mimeType=" + mimeType + ", latitude=" + latitude + ", longitude=" + longitude + ", orientation=" + orientation;
     }
 }

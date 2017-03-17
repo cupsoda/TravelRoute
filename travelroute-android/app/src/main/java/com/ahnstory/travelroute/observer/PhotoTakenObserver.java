@@ -102,6 +102,7 @@ public class PhotoTakenObserver extends ContentObserver {
                 double longitude = cursor.getDouble(cursor.getColumnIndex(projections[5]));
                 int orientation = cursor.getInt(cursor.getColumnIndex(projections[6]));
                 mediaMarker = new MediaMarker(id, takenDate, mediaPath, mimeType, latitude, longitude, orientation);
+                Logger.v(getClass().getSimpleName(), mediaMarker.toString());
             }
             cursor.close();
         }
