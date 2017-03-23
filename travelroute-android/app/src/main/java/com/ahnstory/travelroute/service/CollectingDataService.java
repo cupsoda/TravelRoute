@@ -30,7 +30,7 @@ public class CollectingDataService extends Service {
         contentObserver = new PhotoTakenObserver(this, handler);
         // TODO @SSO 동영상이나 DCIM 에 저장되어 있는 사진 정보도 가져오기
         getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, contentObserver);
-//        getContentResolver().registerContentObserver(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, true, contentObserver);
+        getContentResolver().registerContentObserver(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, true, contentObserver);
 //        getContentResolver().registerContentObserver(Uri.fromFile(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)), true, contentObserver);
         return Service.START_NOT_STICKY;
     }

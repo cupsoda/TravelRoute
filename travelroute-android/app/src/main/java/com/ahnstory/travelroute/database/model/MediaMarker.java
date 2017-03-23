@@ -16,6 +16,17 @@ public class MediaMarker {
     private double longitude;
     private int orientation;
 
+    /**
+     * use only when you represent it is null.
+     */
+    public MediaMarker() {
+
+    }
+
+    public MediaMarker(long mediaId, Date takenDate, String mediaPath, String mimeType, double latitude, double longitude) {
+        this(mediaId, takenDate, mediaPath, mimeType, latitude, longitude, 0);
+    }
+
     public MediaMarker(long mediaId, Date takenDate, String mediaPath, String mimeType, double latitude, double longitude, int orientation) {
         this.mediaId = mediaId;
         this.takenDate = takenDate;
