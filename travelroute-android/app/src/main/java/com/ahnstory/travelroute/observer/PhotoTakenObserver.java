@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.provider.BaseColumns;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.ahnstory.travelroute.config.AppConfiguration;
 import com.ahnstory.travelroute.database.model.MediaMarker;
@@ -43,9 +44,9 @@ public class PhotoTakenObserver extends ContentObserver {
                 // android.permission.READ_EXTERNAL_STORAGE 퍼미션을 받았는지 체크한다
                 if (PermissionHandler.checkPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                     if (uri.toString().contains(MediaStore.Images.Media.EXTERNAL_CONTENT_URI.toString())) {
-                        return Observable.just(processDataInMediaStoreImageUri(uri));
+                        return Observable.just(processDataInMediaStoreImage(uri));
                     } else if (uri.toString().contains(MediaStore.Video.Media.EXTERNAL_CONTENT_URI.toString())) {
-                        return Observable.just(processDataInMediaStoreVideoUri(uri));
+                        return Observable.just(processDataInMediaStoreVideo(uri));
                     }
                 } else {
                     // TODO @SSO 권한 승인을 받지 못한 경우에 대한 메시지 보여주기
@@ -76,9 +77,9 @@ public class PhotoTakenObserver extends ContentObserver {
         }
     }
 
-    @NonNull
-    private MediaMarker processDataInMediaStoreImageUri(Uri uri) {
-        MediaMarker mediaMarker = new MediaMarker();
+    @Nullable
+    private MediaMarker processDataInMediaStoreImage(Uri uri) {
+        MediaMarker mediaMarker = null;
         String[] projections = new String[]{
                 android.provider.BaseColumns._ID,
                 MediaStore.Images.ImageColumns.DATE_TAKEN,
@@ -113,9 +114,9 @@ public class PhotoTakenObserver extends ContentObserver {
         return mediaMarker;
     }
 
-    @NonNull
-    private MediaMarker processDataInMediaStoreVideoUri(Uri uri) {
-        MediaMarker mediaMarker = new MediaMarker();
+    @Nullable
+    private MediaMarker processDataInMediaStoreVideo(Uri uri) {
+        MediaMarker mediaMarker = null;
 
         String[] projections = new String[]{
                 BaseColumns._ID,
