@@ -22,6 +22,7 @@ import java.util.Date;
 
 import rx.Observable;
 import rx.functions.Func1;
+import rx.schedulers.Schedulers;
 import rx.subjects.PublishSubject;
 
 /**
@@ -38,7 +39,9 @@ public class PhotoTakenObserver extends ContentObserver {
         super(handler);
         this.context = context;
 
-        changedMediaDataEvent.flatMap(new Func1<Uri, Observable<MediaMarker>>() {
+        changedMediaDataEvent
+                .observeOn(Schedulers.io())
+                .flatMap(new Func1<Uri, Observable<MediaMarker>>() {
             @Override
             public Observable<MediaMarker> call(Uri uri) {
                 // android.permission.READ_EXTERNAL_STORAGE 퍼미션을 받았는지 체크한다
